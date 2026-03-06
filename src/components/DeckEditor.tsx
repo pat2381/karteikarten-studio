@@ -104,10 +104,24 @@ export function DeckEditor({ deck, onUpdateDeck, onNewCard, onEditCard, onDelete
                       </p>
                     </div>
                   </div>
-                  <div style={{ display: "flex", gap: 3, flexShrink: 0 }}>
-                    {card.hint && <Lightbulb size={12} color="#f59e0b" style={{ opacity: 0.5 }} />}
-                    <button style={S.iBtn} className="btn" onClick={() => onEditCard(card)}><Edit3 size={13} /></button>
-                    <button style={{ ...S.iBtn, color: "#ef4444" }} className="btn" onClick={() => { if (confirm("Karte löschen?")) onDeleteCard(card.id); }}><Trash2 size={13} /></button>
+                  <div style={{ display: "flex", gap: 4, flexShrink: 0, alignItems: "center" }}>
+                    {card.hint && <Lightbulb size={14} color="#f59e0b" style={{ opacity: 0.6 }} />}
+                    <button
+                      className="btn"
+                      title="Bearbeiten"
+                      onClick={() => onEditCard(card)}
+                      style={{ background: "#1a1f2b", border: "1px solid #2a3040", borderRadius: 6, color: "#94a3b8", cursor: "pointer", padding: "5px 8px", display: "flex", alignItems: "center", gap: 4, fontSize: 12 }}
+                    >
+                      <Edit3 size={14} /> Bearbeiten
+                    </button>
+                    <button
+                      className="btn"
+                      title="Löschen"
+                      onClick={() => { if (confirm("Karte löschen?")) onDeleteCard(card.id); }}
+                      style={{ background: "#2d0a0a", border: "1px solid #ef444433", borderRadius: 6, color: "#ef4444", cursor: "pointer", padding: "5px 8px", display: "flex", alignItems: "center", gap: 4, fontSize: 12 }}
+                    >
+                      <Trash2 size={14} />
+                    </button>
                   </div>
                 </div>
               ))}

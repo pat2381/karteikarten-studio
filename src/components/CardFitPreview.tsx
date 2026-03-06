@@ -12,8 +12,7 @@ interface CardFitPreviewProps {
   catName: string;
 }
 
-const PREVIEW_W = 280;
-const PREVIEW_H = Math.round(PREVIEW_W / 1.41);
+const ZOOM_SIZES = { small: 280, large: 420 };
 
 export function CardFitPreview({ card, catColor, catName }: CardFitPreviewProps) {
   const frontRef = useRef<HTMLDivElement>(null);
@@ -21,6 +20,10 @@ export function CardFitPreview({ card, catColor, catName }: CardFitPreviewProps)
   const [frontFits, setFrontFits] = useState(true);
   const [backFits, setBackFits] = useState(true);
   const [activeSide, setActiveSide] = useState<"front" | "back">("front");
+  const [zoom, setZoom] = useState<"small" | "large">("small");
+
+  const PREVIEW_W = ZOOM_SIZES[zoom];
+  const PREVIEW_H = Math.round(PREVIEW_W / 1.41);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -36,13 +39,20 @@ export function CardFitPreview({ card, catColor, catName }: CardFitPreviewProps)
     <div>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 6 }}>
         <span style={{ color: "#94a3b8", fontSize: 10, fontWeight: 600, textTransform: "uppercase", letterSpacing: 0.4 }}>Live-Vorschau (A6)</span>
-        <div style={{ display: "flex", gap: 4 }}>
+        <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
           {(["front", "back"] as const).map((side) => (
             <button key={side} onClick={() => setActiveSide(side)}
               style={{ ...S.tabMini, borderBottom: activeSide === side ? "2px solid #f59e0b" : "2px solid transparent", color: activeSide === side ? "#f59e0b" : "#64748b" }}>
               {side === "front" ? "Frage" : "Antwort"}
             </button>
           ))}
+          <button
+            onClick={() => setZoom((z) => z === "small" ? "large" : "small")}
+            title={zoom === "small" ? "Vergrößern" : "Verkleinern"}
+            style={{ background: "#1a1f2b", border: "1px solid #2a3040", borderRadius: 4, color: "#94a3b8", cursor: "pointer", padding: "2px 6px", fontSize: 11, fontWeight: 600, lineHeight: 1 }}
+          >
+            {zoom === "small" ? "🔍 Groß" : "🔍 Klein"}
+          </button>
         </div>
       </div>
       <div style={{ display: "flex", gap: 6, marginBottom: 6 }}>
@@ -63,7 +73,7 @@ export function CardFitPreview({ card, catColor, catName }: CardFitPreviewProps)
             </div>
           </div>
         ) : (
-          <div ref={backRef} style={{ width: "100%", height: "100%", overflow: "hidden", display: "flex", flexDirection: "column", background: `${catColor}08` }}>
+          <div ref={backRef} style={{ width: "100%", height: "100%", overflow: "hidden", display: "flex", flexDirection: "column", background: "white" }}>
             <div style={{ background: catColor || "#64748b", padding: "2px 6px", display: "flex", justifyContent: "space-between" }}>
               <span style={{ color: "white", fontSize: 4.5, fontWeight: 700, textTransform: "uppercase" }}>{catName || "Kat."}</span>
               <span style={{ color: "white", fontSize: 4.5, fontWeight: 700 }}>ANTWORT</span>

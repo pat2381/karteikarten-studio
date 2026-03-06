@@ -57,7 +57,7 @@ export function PrintA6({ deck, getCat, onBack }: PrintA6Props) {
                 <span style={{ color: "#d1d5db", fontSize: 5.5 }}>{deck.name}</span>
               </div>
             </div>
-            <div className="a6p" style={{ width: "148mm", height: "105mm", background: `${cat.color}08`, borderRadius: 4, overflow: "hidden", display: "flex", flexDirection: "column" }}>
+            <div className="a6p" style={{ width: "148mm", height: "105mm", background: "white", borderRadius: 4, overflow: "hidden", display: "flex", flexDirection: "column" }}>
               <div style={{ background: cat.color, padding: "2mm 5mm", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                 <span style={{ color: "white", fontSize: 8, fontWeight: 700, textTransform: "uppercase" }}>{cat.name} – Karte {index + 1}</span>
                 <span style={{ color: "white", fontSize: 8, fontWeight: 700 }}>ANTWORT</span>
