@@ -1,4 +1,4 @@
-import type { Card, Deck, Category } from "../index";
+import type { Card, Deck } from "../index";
 
 describe("Types", () => {
   it("Card has all required fields", () => {

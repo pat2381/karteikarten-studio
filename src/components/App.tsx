@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Layers, ChevronLeft } from "lucide-react";
 import type { Deck, Card, ViewType } from "@/types";
-import { DEFAULT_CAT, COLORS, FONT_FAMILY } from "@/constants/colors";
+import { DEFAULT_CAT, FONT_FAMILY } from "@/constants/colors";
 import { S, GLOBAL_CSS } from "@/constants/styles";
 import { load, save } from "@/lib/storage";
 import { uid } from "@/lib/helpers";

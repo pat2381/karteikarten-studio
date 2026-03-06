@@ -29,7 +29,7 @@ describe("load()", () => {
 
   it("parses stored JSON value", async () => {
     mockData["test-key"] = JSON.stringify({ name: "Test" });
-    const result = await load<{ name: string }>("test-key", null);
+    const result = await load<{ name: string } | null>("test-key", null);
     expect(result).toEqual({ name: "Test" });
   });
 
