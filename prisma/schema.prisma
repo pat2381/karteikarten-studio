@@ -1,0 +1,50 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  createdAt    DateTime @default(now())
+  decks        Deck[]
+}
+
+model Deck {
+  id         String     @id @default(cuid())
+  userId     String
+  name       String
+  createdAt  BigInt
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  categories Category[]
+  cards      Card[]
+}
+
+model Category {
+  id     String @id
+  deckId String
+  name   String
+  color  String
+  deck   Deck   @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  cards  Card[]
+}
+
+model Card {
+  id          String   @id
+  deckId      String
+  categoryId  String
+  question    String
+  answer      String
+  hint        String?
+  detail      String?
+  isImportant Boolean  @default(false)
+  isExam      Boolean  @default(false)
+  deck        Deck     @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+}

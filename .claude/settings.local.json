@@ -47,7 +47,25 @@
       "Bash(git add src/app/)",
       "Bash(npx jest --no-coverage)",
       "Bash(npm run build)",
-      "Bash(git add -A)"
+      "Bash(git add -A)",
+      "Bash(git push origin master)",
+      "Bash(git add src/components/PrintA6.tsx src/components/CardFitPreview.tsx src/components/DeckEditor.tsx)",
+      "Bash(git add src/components/PrintA6.tsx)",
+      "Bash(npm install next-auth @prisma/client bcryptjs)",
+      "Bash(npm install -D prisma @types/bcryptjs)",
+      "Bash(npx prisma init --datasource-provider sqlite)",
+      "Bash(npx prisma generate)",
+      "Bash(npx prisma migrate dev --name init)",
+      "Bash(npm uninstall prisma @prisma/client)",
+      "Bash(npm install @prisma/client@^5)",
+      "Bash(npm install -D prisma@^5)",
+      "Bash(node -e \"const p = require\\(''./node_modules/prisma/package.json''\\); console.log\\(''prisma:'', p.version\\)\")",
+      "Bash(node -e \"const p = require\\(''./node_modules/@prisma/client/package.json''\\); console.log\\(''@prisma/client:'', p.version\\)\")",
+      "Bash(del prisma.config.ts)",
+      "Bash(node -e \"console.log\\(require\\(''crypto''\\).randomBytes\\(32\\).toString\\(''base64''\\)\\)\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(where node)",
+      "Bash(where npx)"
     ]
   }
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SessionWrapper } from "@/components/auth/SessionWrapper";
 
 export const metadata: Metadata = {
   title: "Karteikarten Studio",
@@ -11,7 +12,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body style={{ margin: 0, background: "#0c0f14" }}>{children}</body>
+      <body style={{ margin: 0, background: "#0c0f14" }}>
+        <SessionWrapper>{children}</SessionWrapper>
+      </body>
     </html>
   );
 }
